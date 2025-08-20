@@ -1,0 +1,8 @@
+machine_id,sensor_id,sensor_type,reading
+M1,S1,Temperature,60
+M1,S2,Pressure,100
+M1,S3,Vibration,2
+M2,S4,Temperature,70
+M2,S5,Pressure,110
+M3,S6,Temperature,80
+M3,S7,Pressure,120
