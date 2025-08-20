@@ -1,0 +1,53 @@
+1. Code Generation & Debugging
+Generate Python code for a Factory Machine Health Monitoring System with the following requirements:
+sensor.py → Define a class Sensor(id, type, reading) where type can be "Temperature", "Pressure", or "Vibration".
+machine.py → Define a Machine class that holds multiple sensors, can add sensors, and computes health using the formula:
+health = 100 - (temp/2 + pressure/10 + vibration*20).
+If any sensor is missing, store the missing ones and return None.
+factory_monitor.py → Define a FactoryMonitor class to manage multiple machines. It checks anomalies with rules:
+If health < 50 → "Critical Machine Failure Risk".
+If missing sensors → "Sensor Offline Warning: <sensor> sensor missing.".
+main.py → Script to load machine + sensor data from a CSV file (machine_id,sensor_id,sensor_type,reading), create machine objects, and print machine health and alerts.
+
+
+2. Code Review & Refactoring
+Refactor this Python code into OOP with 4 files (sensor.py, machine.py, factory_monitor.py, main.py):
+temp = [95, 120]
+pressure = [220, 0]
+vibration = [0.7, 1.5]for i in range(2):
+health = 100 - (temp[i]/2 + pressure[i]/10 + vibration[i]*20)
+print(f"Machine {i} health:{health}")
+    if health < 50:
+        print("ALERT")
+Requirements:
+Use classes: Sensor, Machine, FactoryMonitor.
+Encapsulation with private fields and properties.
+Load data from CSV (machine_id, sensor_id, sensor_type, reading).
+Handle errors: empty/malformed CSV.
+Health formula: 100 - (temp/2 + pressure/10 + vibration*20).
+Alerts:
+Health < 50 → "Critical Machine Failure Risk".
+Missing sensor → "Sensor Offline Warning".
+main.py should read CSV and print results.
+
+3. Unit & Integration Testing
+Generate unit and integration tests in Python for the project (sensor.py, machine.py, factory_monitor.py, main.py) using pytest.
+Requirements:
+Test Machine health calculation:
+temp=120, pressure=250, vibration=1.5 → health < 50 → "Critical Machine Failure Risk".
+Missing any sensor → "Sensor Offline Warning".
+Test FactoryMonitor:
+Machines with [60, 30] health → average = 45.
+Boundary: health = 50 → no alert.
+Test CSV handling in main.py:
+Empty CSV → raise ValueError.
+Malformed CSV → raise ValueError.
+Include both unit tests (individual classes) and integration tests (load CSV + compute health + print alerts).
+Output:
+A complete test_factory.py file with all tests covering above cases.
+
+4. Documentation (README.md)
+*"Generate a README.md file for a Python project with the following structure:
+Introduction → Explain that the project is a Factory Machine Health Monitoring System using sensors (Temperature, Pressure, Vibration), machines, and a factory monitor. Mention the health formula and alert rules.
+Explanation of Classes → Provide clear descriptions of the classes: Sensor, Machine, FactoryMonitor, and main.py, explaining their attributes and methods.
+Example Input/Output → Show a sample CSV file as input and the corresponding program output after running python main.py data.csv. Format everything properly in markdown with code blocks where needed."*
